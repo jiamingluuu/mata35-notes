@@ -55,7 +55,7 @@ regarding the notes, please email
   + The Notes is created for academic use, sending this notes to third party for
    beneficial purposes is prohibited.
 ])
-
+git push -u origin main
 
 
 #show outline.entry.where(
@@ -267,9 +267,12 @@ is the antiderivative of $f$, where $c in RR$ is an arbitrary constant. We can
 verify this fact by computing $F'(x)$.
 
 *Proposition (Properties of Integration).* 
-For every continuous function $f, g: RR arrow.r RR$ and for every $a in RR$,
-- $integral f(x) + g(x) dif x = integral f(x) dif x + integral g(x) dif x.$
-- $integral a f(x) dif x = a integral f(x) dif x.$
+- For arbitrary continuous function $f, g: RR -> RR$,
+$ integral f(x) + g(x) dif x = integral f(x) dif x + integral g(x) dif x. $
+- For arbitrary continuous function $f: RR -> RR$ and scalar $a in RR$, 
+$ integral a f(x) dif x = a integral f(x) dif x. $
+- For arbitrary integrable function $f: RR -> RR$, interval $[a, b] subset.eq RR$, $c in [a, b]$,
+$ integral_a^b f(x) dif x = integral_a^c f(x) dif x + integral_c^b f(x) dif x. $
 
 *Example.* Consider $f(x) = e^(-x)$ and $g(x) = 6x^2$. We can see that
 $ integral f(x) + 2g(x) dif x 
@@ -297,7 +300,7 @@ $ integral^b_a f(x) dif x = integral^alpha_beta G(u)/(u'(x)) dif u. $
 $ integral_0^(pi/3) tan(x) dif x. $
 We will compute this definite integral step by step:
 + *Choose an appropriate $u(x):$* Let $u(x) = cos(x)$.
-+ *Compute write $f(x)$ in terms of $G(u) / u'(x):$* $ G(u) / u'(x) = 1/u.$
++ *Compute write $f(x)$ in terms of $G(u) / (u'(x)):$* $ G(u) / (u'(x)) = 1/u.$
 + *Find the changed upper and lower bound of definite integral:* $alpha = u(0) = 1, beta = u(pi/3) = 1/2.$
 + *Compute the definite integral* by putting all together:
 $ integral_0^(pi/3) tan(x) dif x 
@@ -365,6 +368,40 @@ $ I &=  -e^x cos(x) + e^x sin(x) - integral e^x sin(x) dif x + c\
   2I &= e^x sin(x) - e^x cos(x) + c\
   I &= 1/2 e^x sin(x) - 1/2 e^x cos(x) + c
 $
+
+=== Tabular Method
+Sometime we find it is hard to solve an integral with applying integration by 
+one or two times. In this case, we can draw a table to assist us, to make the 
+computation procedure more clear and well-organized.
+
+*Example.* Compute the following integral:
+$ integral x^4 sin(x) dif x $
+We have seen this pattern quite a lot as we have some intuition that thinking
+this can be solved by applying integration by parts. As the general trend of 
+choosing $u(x)$ and $v'(x)$, let's define 
+$ u(x) = x^4, v'(x) = sin(x). $
+Then, we can draw a table to trace the computation steps while we are doing by
+parts:
+#figure(
+  image("img/tabular-method.png", width: 25%),
+  caption: [Tabular Method]
+)
+Firstly make a table contains three columns, where 
+- the first column indicates the sign in front to the integration we have on each stage,
+- the second column indicates the $u(x)$ in each stage of the integration we have,
+- the third column indicates the $v'(x)$ in each stage of the integration we have.
+Then, by multiplying each term as the red arrows indicate, we end up with
+$
+integral x^4 sin(x) dif x 
+&= + space  x^4 times (-cos(x))\
+&quad quad - space 4x^3 times (-sin(x))\
+&quad quad + space 12x^2 times cos(x)\
+&quad quad - space 24x times sin(x) + c\
+&= -x^4cos(x) + 4x^3sin(x) + 12x^2cos(x) - 24 x sin(x) - 24cos(x)  + c.
+$
+  
+
+
 == Initial Value Problem (IVP)
 _\* Solve the undetermined constant $c$ with given constraint(s)._
 
