@@ -145,7 +145,8 @@ codomain (aka. range) of $f$. There are some functions you may get familiar with
 $ p(x) = a_0 + a_1x + a_2 x^2 + ... + a_n x^n $
 for some natural number $n$. Each of $a_0, a_1, ..., a_n$ are called the 
 _coefficients_ of the polynomial $p$. The highest degree of monomial with 
-non-zero coefficient is called the _degree_ of the polynomial.
+non-zero coefficient is called the _degree_ of the polynomial, denoted by 
+$deg(p)$.
 
 *Definition.* Given a polynomial $p: RR -> RR$, a real number $r$ is called the 
 _root_ of $p$ if $p(r) = 0$.
@@ -175,6 +176,17 @@ Let $p = (x, y)$ be a point on the unit circle $S^1$. The line goes through $p$
 and the origin forms an angle $theta$. We define $cos(theta) equiv x$ and
 $sin(theta) equiv y$. There are some basic trigonometric identities you should 
 familiar with, check *Appendix 3.2* for details.
+
+#rect[
+  _Remark._ Analytically, the identity of trigonometric functions relies on 
+  Euler's formula with _imaginary unit_ $i = sqrt(-1)$:
+  $ e^(i x) = cos(x) + i sin(x). $
+  It follows that 
+  $ 
+  sin(x) = (e^(i x) - e^(- i x))/ 2, 
+  quad cos(x) = (e^(i x) + e^(-i x))/ 2.
+  $
+]
 
 == Limits 
 
@@ -290,7 +302,33 @@ $ integral f(x) dif x + 2 integral g(x) dif x
 over $[a, b]$ and $F$ is an antiderivative of $f$, then 
 $ integral^a_b f(x) dif x = F(b) - F(a). $
 
-== U-Substitution
+== Initial Value Problem (IVP)
+_\* Solve the undetermined constant $c$ with given constraint(s)._
+
+*Example.*  What is the antiderivative of $f(x) = 1/(2x) + sec^2(pi x)$, with 
+$F(1) = 0$?
+
+Step 1: Find the antiderivative of $f$.
+$ 
+F(x)
+  &= integral f(x) dif x \
+  &= integral 1/(2x) + sec^2(pi x) dif x\
+  &= 1/2 ln(x) + 1/pi tan(pi x) + c 
+$
+
+Step 2: Solve $c$ with the given constraint $F(1) = 0$.
+
+$
+F(1) &= 0\
+1/2 ln(1) + 1/pi tan(pi) + c &= 0\
+c &= 0
+$
+
+Combining results above, we have 
+$ F(x) = 1/2 ln(x) + 1/pi tan(pi x) $
+
+== Integration Techniques
+=== U-Substitution
 *Theorem (U-Substitution).* Let $f: [a, b] -> RR$ and $G: [alpha, beta] -> RR$, 
 by carefully choosing a function $u(x)$, we can write the definite integral of 
 $f$ in terms of $G$ and $u$, that is:
@@ -311,7 +349,7 @@ $ integral_0^(pi/3) tan(x) dif x
     &= ln(1) - ln(1/2)\
     &= ln(2) $
 
-== Integration By Parts
+=== Integration By Parts
 *Theorem (Integration By Parts).* Sometime is simply written "by parts" for 
 shorthand.
 $ integral^b_a u(x)v'(x) dif x = [u(x)v(x)]^b_a - integral^b_a u'(x)v(x) dif x. $
@@ -333,7 +371,8 @@ $ integral^b_a u(x)v'(x) dif x = [u(x)v(x)]^b_a - integral^b_a u'(x)v(x) dif x. 
   The intuition behind is because inverse functions and logarithmic functions,
   like $arctan(dot) "and" ln(dot)$, are hard to integrates, you are encouraged to 
   try to find the antiderivative of those by yourself (either by applying u-sub
-  or by parts is doable) and it will be an excellent exercise. But the key is that, once we differentiate them, they become a fraction which we can seek 
+  or by parts is doable) and it will be an excellent exercise. But the key is 
+  that, once we differentiate them, they become a fraction which we can seek 
   techniques already learnt to find a solution.
 ])
 *Example.* Compute the integral by using integration by parts
@@ -393,39 +432,20 @@ Firstly make a table contains three columns, where
 Then, by multiplying each term as the red arrows indicate, we end up with
 $
 integral x^4 sin(x) dif x 
-&= + space  x^4 times (-cos(x))\
+&= underbrace(+,"Sign") space  underbrace(x^4, u(x)) times underbrace((-cos(x)), v'(x))\
 &quad quad - space 4x^3 times (-sin(x))\
 &quad quad + space 12x^2 times cos(x)\
 &quad quad - space 24x times sin(x) + c\
 &= -x^4cos(x) + 4x^3sin(x) + 12x^2cos(x) - 24 x sin(x) - 24cos(x)  + c.
 $
-  
 
-
-== Initial Value Problem (IVP)
-_\* Solve the undetermined constant $c$ with given constraint(s)._
-
-*Example.*  What is the antiderivative of $f(x) = 1/(2x) + sec^2(pi x)$, with 
-$F(1) = 0$?
-
-Step 1: Find the antiderivative of $f$.
-$ 
-F(x)
-  &= integral f(x) dif x \
-  &= integral 1/(2x) + sec^2(pi x) dif x\
-  &= 1/2 ln(x) + 1/pi tan(pi x) + c 
-$
-
-Step 2: Solve $c$ with the given constraint $F(1) = 0$.
-
-$
-F(1) &= 0\
-1/2 ln(1) + 1/pi tan(pi) + c &= 0\
-c &= 0
-$
-
-Combining results above, we have 
-$ F(x) = 1/2 ln(x) + 1/pi tan(pi x) $
+=== Partial Fraction Decomposition (PFD)
+Sometimes, it is easier to deal with two or three simple, separated fractions 
+than to deal with one complicated fraction. For example 
+$ 2 / (x^2 - 1) $
+can be written as 
+$ - 1/(x-1) + 1/(x+1) $
+as you can verify. 
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
