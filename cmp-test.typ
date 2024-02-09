@@ -67,24 +67,73 @@ $
 == Approach 2: Comparison Test
 Notice the following:
 $
-x >= x-4 => 1/x <= 1/(x-4)\
-x-1 >= x-4 => 1/(x-1) <= 1/(x-4)\
-x-2 >= x-4 => 1/(x-2) <= 1/(x-4)
+x >= x-2 => 1/x <= 1/(x-2)\
+x-1 >= x-2 => 1/(x-1) <= 1/(x-2)\
+x-2 >= x-2 => 1/(x-2) <= 1/(x-2)
 $
 By multiplying all the left hand side term together and all the right hand side 
 together, it gives us
 $
-1/(x(x-1)(x-2)) <= 1/(x-4)^3.
+1/(x(x-1)(x-2)) <= 1/(x-2)^3.
 $
 Therefore, consider the integral 
 $
-integral_3^infinity 1/(x-4)^3 dif x,
+integral_3^infinity 1/(x-2)^3 dif x,
 $
-as you can verify, the result of integral evaluation is equal to 1. So by 
-comparison test, integral $I$ converges.
+we have
+$
+integral_3^infinity 1/(x-2)^3 dif x 
+&= lim_(a -> infinity) integral ^a_3 1/(x-2)^3 dif x\ 
+&= lim_(a -> infinity)[ -1/(2(x-2)^2) ]^a_3\
+&= lim_(a -> infinity)(-1/(2(a-2)^2) + 1/(2(3-2)^2))\
+&= lim_(a -> infinity)(-1/(2(a-2)^2) + 1/2)\
+&= 1/2\
+$
+Therefore, because $1/x(x-1)(x-2) <= 1/(x-2)^3$ and 
+$integral^infinity_3 1/(x-2)^3 dif x < infinity$, so integral $I$ convergent.
 
 #rect([
   *Remark.* Comparison test only tells us the convergency of the integral of 
 interest. The theorem, however, does not make any claim regarding the actual 
 value that the integral converges to.
 ])
+== Error Corrections
+In last week's tutorial, I claimed 
+$
+J = integral^infinity_3 1/(x-4)^3 dif x 
+$
+converges, which is false. 
+#figure(
+  image("img/discont.png", width:40%),
+  caption: [Discontinuity at $x=4$.]
+)
+As you can see, there exists a discontinuity at $x=4$. Since 
+$4 in [3, infinity)$, so we cannot apply the fundamental integral rule to 
+compute the integral value directly as we requires integrand to be continuous 
+within the interval of interest. So to discuss the convergency of $J$, we need 
+to apply some ticks to manipulate the integrand.
+
+*Definition.* Function $f: RR ->  RR$ is an _odd function_ if $f(-x) = -f(x)$
+for every $x in "dom"(f)$.
+
+#pagebreak()
+*Theorem 3.* For every odd function $f: RR -> RR$ and $a > 0$ such that 
+$a, -a in "dom"(f)$
+$ integral^a_(-a) f(x) dif x = 0 $
+Therefore, back to our discussion on 
+$ J = integral_3^infinity 1/(x-4)^3 dif x. $
+Firstly we are going to apply u-sub:
+
++ Let $u = x-4$, it implies $dif u = dif x$.
++ Notice that when $x = 3$, $u = -1$. And when $x -> infinity$, $u -> infinity$.
+It leaves us 
+$ 
+integral_3^infinity 1/(x-4)^3 dif x 
+&= integral_(-1)^infinity 1/u^3 dif u\
+&= integral_(-1)^1 1/u^3 dif u + integral_1^infinity 1/u^3 dif x\
+&= 0 + integral_1^infinity 1/u^3 dif x &"[By Thm 3]"\
+&= lim_(a -> infinity) integral^a_1 1/u^3 dif x\
+&= lim_(a -> infinity) [ -1/ (2u^2)]^a_1\
+&= -1/2 lim_(a -> infinity) (1/a^2 - 1)\
+&= 1/2 < infinity
+$
