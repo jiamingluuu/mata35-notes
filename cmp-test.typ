@@ -122,7 +122,19 @@ $a, -a in "dom"(f)$
 $ integral^a_(-a) f(x) dif x = 0 $
 Therefore, back to our discussion on 
 $ J = integral_3^infinity 1/(x-4)^3 dif x. $
-Firstly we are going to apply u-sub:
+*Claim:* $1/x^3$ is an odd function.
+
+_proof._  
+Let $f(x) = 1/x^3$, therefore
+$
+f(-x) 
+&= 1/(-x)^3\
+&= -1/x^3\
+&= -f(x)\
+$
+#align(right, [$square$])
+
+Then, we are going to apply u-sub:
 
 + Let $u = x-4$, it implies $dif u = dif x$.
 + Notice that when $x = 3$, $u = -1$. And when $x -> infinity$, $u -> infinity$.
