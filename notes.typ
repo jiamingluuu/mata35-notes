@@ -12,7 +12,7 @@
 #v(2cm)
 #align(left, [ 
 #h(1cm) *Instructor*: Dr. Kaidi Ye\
-#h(1cm) *Author*: Jiaming Lu\
+#h(1cm) *Author*: JiaYan Lu\
 ])
 
 #v(7cm)
@@ -23,11 +23,11 @@
 
 #pagebreak()
 #move(dy: 1em, [
-© Jiaming Lu, 2024\
+© JiaYan Lu, 2024\
 All rights reserved. For question, error correcting, or any other issue 
 regarding the notes, please email
 
-#align(center, [jiaming.lu\@mail.utoronto.ca])
+#align(center, [jiaYan.lu\@mail.utoronto.ca])
 
 ])
 
@@ -39,14 +39,14 @@ regarding the notes, please email
 
 #move(dy: 45em,
 [
-  The Notes (_MATA35 Course Notes_) is made solely by the author (Jiaming Lu), 
+  The Notes (_MATA35 Course Notes_) is made solely by the author (JiaYan Lu), 
   students in MATA35H3 - Winter 2024 session may read The Note as reference. 
   If you encounter any gaffes, omissions, snafus, kludges, typos, 
   mathos, grammaros, thinkos, brain farts, poor design decisions, historical 
   inaccuracies, anachronisms, inconsistencies, exaggerations, dithering, 
   blather, distortions, oversimplifications, redundancy, logorrhea, nonsense, 
-  garbage, cruft, junk, and outright lies, *all of which are entirely Jiaming 
-  Lu’s liabilities.* Please feel free to contact with Jiaming once you find 
+  garbage, cruft, junk, and outright lies, *all of which are entirely JiaYan 
+  Lu’s liabilities.* Please feel free to contact with JiaYan once you find 
   mistake in this notes, any help or advise is greatly appreciated.
 
   Students who read the notes should know the followings:
@@ -265,7 +265,7 @@ $ integral^b_a f(x) dif x = lim_(n->infinity) sum^n_(i=1) f(x^*_i) Delta x. $
 #rect[
   _Remark._ This formula characterized the intuition of _Riemann integral_: we
   can approximate the value of the indefinite integral of a given function $f$ 
-  by chopping the underline area of $f$ into $n$ small rectangles, summing up
+  by chopping the underline area of $f$ into $n$ small rectangles, sumYan up
   the area of each rectangle gives the approximation. The more rectangles we 
   chopped, the more accurate the approximation we have.
 ]
